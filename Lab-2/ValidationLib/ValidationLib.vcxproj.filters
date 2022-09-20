@@ -15,30 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sum.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="inputNatural.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="_input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="_clearInput.cpp">
+    <ClCompile Include="inputReal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="inputNatural.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="_input.h">
+    <ClInclude Include="inputReal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="_clearInput.h">
+    <ClInclude Include="inputInteger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

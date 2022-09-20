@@ -1,10 +1,12 @@
 #include <stdio.h>
-//#include "..\ValidationLib\Sum.h";
-#include "..\ValidationLib\inputNatural.h";
+#include "..\ValidationLib\inputReal.h";
 
-int main() {
-	//printf("%d \n", Sum(3, 1));
-	int a = inputNatural("---Enter natural number: ");
-	printf("Your number: %d", a);
-	return 0;
+void main() 
+{
+	// задача: предоставить интерфейсы для осуществления 
+	//валидированного ввода вещественных чисел
+
+	double f = inputReal("\n---Enter the number: ");
+
+
 }

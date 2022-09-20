@@ -140,15 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="inputNatural.cpp" />
-    <ClCompile Include="Sum.cpp" />
-    <ClCompile Include="_clearInput.cpp" />
-    <ClCompile Include="_input.cpp" />
+    <ClCompile Include="inputReal.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inputInteger.h" />
     <ClInclude Include="inputNatural.h" />
-    <ClInclude Include="Sum.h" />
-    <ClInclude Include="_clearInput.h" />
-    <ClInclude Include="_input.h" />
+    <ClInclude Include="inputReal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
