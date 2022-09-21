@@ -49,10 +49,10 @@ double parseFractPartToDouble(const char* str) {
 
 double parseWholePartToDouble(const char* str) {
 	int g = 0;
-	while (str[g] != '.' && str[g] != ',' && str[g] != '\0') ++g; // количество цифр d целой части
+	while (str[g] != '.' && str[g] != ',' && str[g] != '\0') ++g; // g = количество цифр в целой части
 
 	int arr_int_size = g;
-	int* arr_int = (int*)malloc(arr_int_size * sizeof(int)); // динамический массив
+	int* arr_int = (int*)malloc(arr_int_size * sizeof(int));
 	for (int i = 0; i < arr_int_size; ++i) {
 		arr_int[i] = str[i] - 48;
 	}
@@ -91,16 +91,7 @@ bool inputIsInvalidDueToMinuses(const char* str) {
 	}
 	return false;
 }
-/*
-bool inputIsInvalidDueToSpaces(const char* str) {
-	for (int i = 0; str[i] != '\0'; ++i) {
-		if (str[i] == ' ')
-			return true;
-	}
-	return false;
-}
-избыточная проверка
-*/
+
 bool inputIsInvalidDueToSeparators(const char* str) {
 	int number_of_separators = 0;
 	for (int i = 0; str[i] != '\0'; ++i)
@@ -115,8 +106,7 @@ bool inputIsInvalidDueToLetters(const char* str) {
 		if (str[i] != '0' && str[i] != '1' && str[i] != '2' &&
 			str[i] != '3' && str[i] != '4' && str[i] != '5' &&
 			str[i] != '6' && str[i] != '7' && str[i] != '8' &&
-			str[i] != '9' && str[i] != '.' && str[i] != ',' && str[i] != '-'
-			)
+			str[i] != '9' && str[i] != '.' && str[i] != ',' && str[i] != '-')
 		{
 			return true;
 		}
@@ -129,17 +119,13 @@ double inputReal(const char* prompt) {
 
 	printf("%s", prompt);
 	gets_s(input);
-	//scanf_s("%s", input, length);
 
 	// Вызов проверяющих функций
-	while (inputIsInvalidDueToLetters(input) || inputIsInvalidDueToSeparators(input) || inputIsInvalidDueToMinuses(input) || inputIsInvalidDueToDigitAbsence(input)
-		) 
+	while (inputIsInvalidDueToLetters(input) || inputIsInvalidDueToSeparators(input) || inputIsInvalidDueToMinuses(input) || inputIsInvalidDueToDigitAbsence(input)) 
 	{
-		//fflush(stdin); 
 		system("cls");
 		printf("Error. Try again %s", prompt);
 		gets_s(input);
-		//scanf_s("%s", input, length);
 	}
 
 	char input_unsigned[length] = {};
