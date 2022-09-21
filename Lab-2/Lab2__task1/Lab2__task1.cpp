@@ -7,6 +7,6 @@ void main()
 	//валидированного ввода вещественных чисел
 
 	double f = inputReal("\n---Enter the number: ");
-
+	printf("\nYour number: %f", f);
 
 }
