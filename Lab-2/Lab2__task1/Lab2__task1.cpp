@@ -1,12 +1,19 @@
 #include <stdio.h>
-#include "..\ValidationLib\inputReal.h";
+#include <locale.h>
+
+/*
+Сколько слагаемых должно быть  в  сумме  1+1/2+1/3+1/4+...+1/n, 
+чтобы эта сумма оказалась больше 5 ?
+*/
 
 void main() 
 {
-	// задача: предоставить интерфейсы для осуществления 
-	//валидированного ввода вещественных чисел
+	setlocale(LC_ALL, "ru");
+	float sum = 0;
+	int i = 1;
+	for (; sum <= 5; ++i) {
+		sum += 1.0 / (float)i;
+	}
 
-	double f = inputReal("\n---Enter the number: ");
-	printf("\nYour number: %f", f);
-
+	printf("Нужно %d слагаемых", i);
 }
