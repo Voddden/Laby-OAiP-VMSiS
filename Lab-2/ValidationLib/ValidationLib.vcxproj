@@ -141,11 +141,12 @@
   <ItemGroup>
     <ClCompile Include="inputNatural.cpp" />
     <ClCompile Include="inputReal.cpp" />
+    <ClCompile Include="inputSN.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inputInteger.h" />
     <ClInclude Include="inputNatural.h" />
     <ClInclude Include="inputReal.h" />
+    <ClInclude Include="inputSN.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

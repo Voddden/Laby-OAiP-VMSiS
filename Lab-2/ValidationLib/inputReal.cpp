@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int length = 1000;
+const int length = 100;
 
 double Pow(long num, long deg) {
 	double result = 1;
@@ -28,7 +28,7 @@ double parseFractPartToDouble(const char* str) {
 	while (str[g] != '.' && str[g] != ',' && str[g] != '\0') ++g;
 	int whole_digits = g; // кол-во цифр в целой части
 	int u = g;
-	for (; str[u] != '\0'; ++u); 
+	for (; str[u] != '\0'; ++u);
 	int all_digits = u - 1; // кол-во цифр вообще в числе
 	int fract_digits = all_digits - whole_digits; // кол-во цифр в дробной части
 
@@ -71,10 +71,7 @@ double parseWholePartToDouble(const char* str) {
 bool inputIsInvalidDueToDigitAbsence(const char* str) {
 	int num_of_digits = 0;
 	for (int i = 0; str[i] != '\0'; ++i) {
-		if (str[i] == '0' || str[i] == '1' || str[i] == '2' ||
-			str[i] == '3' || str[i] == '4' || str[i] == '5' ||
-			str[i] == '6' || str[i] == '7' || str[i] == '8' ||
-			str[i] == '9')
+		if ('0' <= str[i] && str[i] <= '9')
 		{
 			++num_of_digits;
 		}
@@ -100,6 +97,8 @@ bool inputIsInvalidDueToSeparators(const char* str) {
 			++number_of_separators;
 	if (number_of_separators > 1)
 		return true;
+	else
+		return false;
 }
 
 bool inputIsInvalidDueToLetters(const char* str) {
@@ -117,12 +116,16 @@ bool inputIsInvalidDueToLetters(const char* str) {
 
 double inputReal(const char* prompt) {
 	char input[length] = {};
-
+	//fflush(stdin);
+	system("cls");
+	rewind(stdin);
 	printf("%s", prompt);
-	gets_s(input);
+
+	gets_s(input, length);
+	//fgets(input, length, stdin);
 
 	// Вызов проверяющих функций
-	while (inputIsInvalidDueToLetters(input) || inputIsInvalidDueToSeparators(input) || inputIsInvalidDueToMinuses(input) || inputIsInvalidDueToDigitAbsence(input)) 
+	while (inputIsInvalidDueToLetters(input) || inputIsInvalidDueToSeparators(input) || inputIsInvalidDueToMinuses(input) || inputIsInvalidDueToDigitAbsence(input))
 	{
 		system("cls");
 		printf("Error. Try again %s", prompt);
@@ -133,7 +136,7 @@ double inputReal(const char* prompt) {
 	bool numIsSigned = false;
 
 	if (input[0] == '-') {
-		for (int i = 0; i < length-1; ++i) {
+		for (int i = 0; i < length - 1; ++i) {
 			input_unsigned[i] = input[i + 1];
 		}
 		numIsSigned = true;

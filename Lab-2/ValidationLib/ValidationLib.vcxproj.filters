@@ -21,6 +21,9 @@
     <ClCompile Include="inputReal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="inputSN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inputNatural.h">
@@ -29,7 +32,7 @@
     <ClInclude Include="inputReal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inputInteger.h">
+    <ClInclude Include="inputSN.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
