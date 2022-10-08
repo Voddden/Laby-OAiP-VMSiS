@@ -31,14 +31,10 @@ void main()
 	int arr[100] = {};
 	int n = inputSN("Введите размерность массива: ");
 	while (n > 100) {
-		system("cls");
-		printf("Некорректные данные\n");
 		n = inputSN("Введите размерность массива: ");
 	}
 	int choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
-		system("cls");
-		printf("Некорректные данные\n");
 		choice = inputSN("Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	}
 
@@ -52,7 +48,7 @@ void main()
 	printf("Изначальный массив:\n");
 	outputArrInt(arr, n);
 
-	// собственно сам алгос:
+	// алгос:
 	for (int i = 0; i < n; ++i) {
 		if (arr[i] % 2 == 0) {
 			for (int k = i; k < n + 1; ++k) {

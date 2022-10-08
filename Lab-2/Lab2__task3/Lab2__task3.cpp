@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <locale.h>
-#include "..\ValidationLib\inputNatural.h";
+#include "..\ValidationLib\inputSN.h";
 /*
 Проверить являются ли числа P и Q взаимнопростыми
 */
@@ -12,8 +12,8 @@ int nod(int m, int n)
 void main()
 {
 	setlocale(LC_ALL, "ru");
-	int P = inputNatural("Enter P: ");
-	int Q = inputNatural("Enter Q: ");
+	int P = inputSN("Enter P: ");
+	int Q = inputSN("Enter Q: ");
 
 	if (nod(P, Q) == 1)
 		printf("%d и %d взаимнопросты\n", P, Q);

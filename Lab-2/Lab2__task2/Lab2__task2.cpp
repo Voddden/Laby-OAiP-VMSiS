@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "..\ValidationLib\inputNatural.h";
+#include "..\ValidationLib\inputSN.h";
 /*
 Составить алгоритм,  определяющий  количество способов,  
 какими   задуманное число n>1 можно представить 
@@ -9,10 +9,10 @@
 
 void main() 
 {
-	int n = inputNatural("Enter n>1: ");
+	int n = inputSN("Enter n>1: ");
 	while (n <= 1) {
 		printf("Wrong input\n");
-		n = inputNatural("Enter n>1: ");
+		n = inputSN("Enter n>1: ");
 	}
 
 	int k = 0;
