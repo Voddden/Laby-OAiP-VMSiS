@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <stdlib.h>
 
 const int length = 100;
@@ -26,11 +26,11 @@ double Pow(long num, long deg) {
 double parseFractPartToDouble(const char* str) {
 	int g = 0;
 	while (str[g] != '.' && str[g] != ',' && str[g] != '\0') ++g;
-	int whole_digits = g; // кол-во цифр в целой части
+	int whole_digits = g; // РєРѕР»-РІРѕ С†РёС„СЂ РІ С†РµР»РѕР№ С‡Р°СЃС‚Рё
 	int u = g;
 	for (; str[u] != '\0'; ++u);
-	int all_digits = u - 1; // кол-во цифр вообще в числе
-	int fract_digits = all_digits - whole_digits; // кол-во цифр в дробной части
+	int all_digits = u - 1; // РєРѕР»-РІРѕ С†РёС„СЂ РІРѕРѕР±С‰Рµ РІ С‡РёСЃР»Рµ
+	int fract_digits = all_digits - whole_digits; // РєРѕР»-РІРѕ С†РёС„СЂ РІ РґСЂРѕР±РЅРѕР№ С‡Р°СЃС‚Рё
 
 	int arr_int_size = fract_digits;
 	int* arr_int = (int*)malloc(arr_int_size * sizeof(int));
@@ -50,7 +50,7 @@ double parseFractPartToDouble(const char* str) {
 
 double parseWholePartToDouble(const char* str) {
 	int g = 0;
-	while (str[g] != '.' && str[g] != ',' && str[g] != '\0') ++g; // g = количество цифр в целой части
+	while (str[g] != '.' && str[g] != ',' && str[g] != '\0') ++g; // g = РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ РІ С†РµР»РѕР№ С‡Р°СЃС‚Рё
 
 	int arr_int_size = g;
 	int* arr_int = (int*)malloc(arr_int_size * sizeof(int));
@@ -124,7 +124,7 @@ double inputReal(const char* prompt) {
 	gets_s(input, length);
 	//fgets(input, length, stdin);
 
-	// Вызов проверяющих функций
+	// Р’С‹Р·РѕРІ РїСЂРѕРІРµСЂСЏСЋС‰РёС… С„СѓРЅРєС†РёР№
 	while (inputIsInvalidDueToLetters(input) || inputIsInvalidDueToSeparators(input) || inputIsInvalidDueToMinuses(input) || inputIsInvalidDueToDigitAbsence(input))
 	{
 		system("cls");
@@ -148,11 +148,11 @@ double inputReal(const char* prompt) {
 	}
 
 	double res = 0;
-	// парсинг целой части:
+	// РїР°СЂСЃРёРЅРі С†РµР»РѕР№ С‡Р°СЃС‚Рё:
 	res += parseWholePartToDouble(input_unsigned);
-	// парсинг дробной части:
+	// РїР°СЂСЃРёРЅРі РґСЂРѕР±РЅРѕР№ С‡Р°СЃС‚Рё:
 	res += parseFractPartToDouble(input_unsigned);
-	//установление знака:
+	// СѓСЃС‚Р°РЅРѕРІР»РµРЅРёРµ Р·РЅР°РєР°:
 	if (numIsSigned)
 		res *= -1;
 

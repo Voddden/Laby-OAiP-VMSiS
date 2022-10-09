@@ -1,12 +1,12 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <locale.h>
 #include "..\ValidationLib\inputSN.h";
 /*
-Проверить являются ли числа P и Q взаимнопростыми
+РџСЂРѕРІРµСЂРёС‚СЊ СЏРІР»СЏСЋС‚СЃСЏ Р»Рё С‡РёСЃР»Р° P Рё Q РІР·Р°РёРјРЅРѕРїСЂРѕСЃС‚С‹РјРё
 */
 int nod(int m, int n)
 {
-	return n ? nod(n, m % n) : m; // алгоритм Евклида
+	return n ? nod(n, m % n) : m; // Р°Р»РіРѕСЂРёС‚Рј Р•РІРєР»РёРґР°
 }
 
 void main()
@@ -16,7 +16,7 @@ void main()
 	int Q = inputSN("Enter Q: ");
 
 	if (nod(P, Q) == 1)
-		printf("%d и %d взаимнопросты\n", P, Q);
+		printf("%d Рё %d РІР·Р°РёРјРЅРѕРїСЂРѕСЃС‚С‹\n", P, Q);
 	else
-		printf("%d и %d НЕвзаимнопросты\n", P, Q);
+		printf("%d Рё %d РќР•РІР·Р°РёРјРЅРѕРїСЂРѕСЃС‚С‹\n", P, Q);
 }
