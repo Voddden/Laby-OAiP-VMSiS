@@ -1,20 +1,23 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #include <time.h>
-#include "..\ValidationLib\inputReal.h"
 #include "..\ValidationLib\inputSN.h"
+#include "..\ValidationLib\inputReal.h"
 
 /*
-В одномерном массиве, состоящем из n вещественных элементов, вычислить:
-- 1)сумму отрицательных элементов массива;
-- 2)произведение элементов массива, 
-расположенных между максимальным и минимальным элементами
+Р”Р°РЅ РјР°СЃСЃРёРІ Рђ СЂР°Р·РјРµСЂР° n, РЅРµ СЃРѕРґРµСЂР¶Р°С‰РёР№ РЅСѓР»РµРІС‹С… СЌР»РµРјРµРЅС‚РѕРІ.
+РќРµРѕР±С…РѕРґРёРјРѕ РїРѕР»СѓС‡РёС‚СЊ РјР°СЃСЃРёРІ Рђ, РІ РєРѕС‚РѕСЂРѕР№ РІРЅР°С‡Р°Р»Рµ РёРґСѓС‚ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹,
+Р° Р·Р°С‚РµРј РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ. Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РјР°СЃСЃРёРІС‹ РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ.
 */
 
 void randArrDoub(double arr[], int size) {
 	for (int i = 0; i < size; ++i)
 		arr[i] = double(rand() % 10) - rand() % 10;
+	for (int i = 0; i < size; ++i) {
+		if (arr[i] == 0.0)
+			++arr[i];
+	}
 }
 
 void inputArrDoub(double arr[], int size) {
@@ -23,87 +26,57 @@ void inputArrDoub(double arr[], int size) {
 	for (int i = 0; i < size; ++i) {
 		iHateC[5] = i + 48;
 		arr[i] = inputReal(iHateC);
+		if (arr[i] == 0.0) {
+			arr[i] = inputReal(iHateC);
+			--i;
+		}
 	}
 }
 
 void outputArrDoub(double arr[], int size) {
 	for (int i = 0; i < size; ++i)
-		printf("%-5.3lf\t", arr[i]);
+		printf("%-5.2lf\t", arr[i]);
 }
 
-double sumOfNegativeElements(double arr[], int size) {
-	double sum = 0;
-	for (int i = 0; i < size; ++i) {
-		if (arr[i] < 0)
-			sum += arr[i];
-	}
-	return sum;
-}
-
-int ABS(int num) {
-	if (num < 0)
-		num *= -1;
-	return num;
-}
-
-double composition(double arr[], int size) {
-	double max = arr[0];
-	int indexMax = 0;
-	for (int i = 0; i < size; ++i) {
-		if (arr[i] > max) {
-			max = arr[i];
-			indexMax = i;
+void partialSort(double arr[], int size) {
+	double temp = 0;
+	for (int i = 0; i < size - 1; ++i) {
+		for (int k = 0; k < size - 1 - i; ++k) {
+			if (arr[k] < 0 && arr[k + 1] > 0) {
+				temp = arr[k];
+				arr[k] = arr[k + 1];
+				arr[k + 1] = temp;
+			}
 		}
 	}
-	double min = arr[0];
-	int indexMin = 0;
-	for (int i = 0; i < size; ++i) {
-		if (arr[i] < min) {
-			min = arr[i];
-			indexMin = i;
-		}
-	}
-	double c = 1;
-	if (indexMax == indexMin || ABS(indexMax - indexMin) == 1) {
-		c = 0;
-	}
-	else if (indexMin < indexMax) { // min слева, max справа (по возрастанию)
-		for (int i = indexMin + 1; i < indexMax; ++i)
-			c *= arr[i];
-	}
-	else if (indexMin > indexMax) { // min справа, max слева (по убыванию) 
-		for (int i = indexMax + 1; i < indexMin; ++i)
-			c *= arr[i];
-	}
-
-	return c;
 }
 
 void main()
 {
 	setlocale(LC_ALL, "ru");
-	srand(time(NULL));
-	double arr[100] = {};
-	
-	int size = inputSN("Введите размерность массива: ");
-	while (size > 100) {
-		size = inputSN("Введите размерность массива: ");
+	double A[100] = {};
+	int n = inputSN("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ РјР°СЃСЃРёРІР°: ");
+	while (n > 100) {
+		n = inputSN("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ РјР°СЃСЃРёРІР°: ");
 	}
-	int choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+	int choice = inputSN("---Р—Р°РїРѕР»РЅРёС‚СЊ РјР°СЃСЃРёРІ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ - 1\tСЃР»СѓС‡Р°Р№РЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё - 2\n");
 	while (choice != 1 && choice != 2) {
-		choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+		choice = inputSN("---Р—Р°РїРѕР»РЅРёС‚СЊ РјР°СЃСЃРёРІ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹ - 1\tСЃР»СѓС‡Р°Р№РЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё - 2\n");
 	}
-	
+
 	switch (choice) {
 	case 1:
-		inputArrDoub(arr, size); break;
+		inputArrDoub(A, n); break;
 	case 2:
-		randArrDoub(arr, size);
+		randArrDoub(A, n);
 	}
 
-	printf("\nМассив:\n");
-	outputArrDoub(arr, size);
-
-	printf("\nСумма отрицательных элементов массива: %lf\n", sumOfNegativeElements(arr, size));
-	printf("Произведение элементов массива, расположенных между максимальным и минимальным элементами: %lf\n", composition(arr, size));
+	printf("\nРР·РЅР°С‡Р°Р»СЊРЅС‹Р№ РјР°СЃСЃРёРІ:\n");
+	outputArrDoub(A, n);
+	// РђР»РіРѕСЃ РЅРµРїРѕР»РЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
+	partialSort(A, n);
+	//
+	printf("\n\nРњР°СЃСЃРёРІ РїРѕСЃР»Рµ СЃРѕСЂС‚РёСЂРѕРІРєРё (+СЌР»РµРјРµРЅС‚С‹ СЃР»РµРІР°, -СЌР»РµРјРµРЅС‚С‹ СЃРїСЂР°РІР°):\n");
+	outputArrDoub(A, n);
+	printf("\n");
 }
