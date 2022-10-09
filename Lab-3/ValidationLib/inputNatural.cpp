@@ -1,4 +1,4 @@
-#include <stdio.h>
+Ôªø#include <stdio.h>
 
 void _clearInput() {
 	while (getchar() != '\n');
@@ -16,7 +16,7 @@ void _input(const char* prompt, const char* pattern, void*
 	}
 }
 
-// √À¿¬Õ¿ﬂ ‘”Õ ÷»ﬂ
+// –ì–õ–ê–í–ù–ê–Ø –§–£–ù–ö–¶–ò–Ø
 int inputNatural(const char* prompt) {
 	int value;
 	_input(prompt, "%d", &value);
