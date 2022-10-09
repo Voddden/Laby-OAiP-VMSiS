@@ -46,10 +46,10 @@ bool AisMagical(int arr[][100], int size) {
 	int* rowSums = (int*)calloc(size, sizeof(int)); // массив сумм элементов соответвующих строк массива arr[][]
 	int* colSums = (int*)calloc(size, sizeof(int)); // массив сумм элементов соответсвующих столбцов массива arr[][]
 
-	for (int i = 0; i < size; ++i) {
-		for (int j = 0; j < size; ++j) {
-			rowSums[i] += arr[i][j];
-			colSums[i] += arr[j][i];
+	for (int h = 0; h < size; ++h) {
+		for (int i = 0; i < size; ++i) {
+			rowSums[h] += arr[h][i];
+			colSums[h] += arr[i][h];
 		}
 	}
 
@@ -67,7 +67,9 @@ bool AisMagical(int arr[][100], int size) {
 		if (rowSums[i] != colSums[i])
 			return false;
 	
-	if (S_mainDiag == S_sideDiag == tempRow == tempCol)
+	bool wtf = (S_mainDiag == S_sideDiag) == (tempRow == tempCol);
+
+	if (wtf)
 		return true;
 	else
 		return false;
@@ -84,20 +86,24 @@ bool AisMagical(int arr[][100], int size) {
 void main()
 {
 	setlocale(LC_ALL, "ru");
-	int A[100][100] = {4, 5, 14, 11,
-					   1, 15, 8, 10,
-					   16, 2, 9, 7,
-					   13, 12, 3, 6};
-	int n = inputSN("Введите порядок массива: ");
+	int A[100][100] = {};
+	int n = inputSN("Введите порядок квадрата: ");
 	while (n > 100) {
-		n = inputSN("Введите размерность массива: ");
-	}
-	int choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\t3 - пропустить\n");
-	while (choice != 1 && choice != 2 && choice != 3) {
-		choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\t3 - пропустить\n");
+		n = inputSN("Введите порядок квадрата: ");
 	}
 
-	
+	//// определение массива в исходном коде:
+	A[0][0] = 4; A[0][1] = 5; A[0][2] = 14; A[0][3] = 11;
+	A[1][0] = 1; A[1][1] = 15; A[1][2] = 8; A[1][3] = 10;
+	A[2][0] = 16; A[2][1] = 2; A[2][2] = 9; A[2][3] = 7;
+	A[3][0] = 13; A[3][1] = 12; A[3][2] = 3; A[3][3] = 6;
+	//
+
+	int choice = inputSN("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\tзначения по умолчанию - 3\n");
+	while (choice != 1 && choice != 2 && choice != 3) {
+		choice = inputSN("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\tзначения по умолчанию - 3\n");
+	}
+
 	switch (choice) {
 	case 1:
 		inputArr(A, n); break;
@@ -109,7 +115,7 @@ void main()
 	printf("\nМассив:\n");
 	outputArr(A, n);
 
-	printf("Является ли массив магическим? ");
+	printf("Является ли квадрат магическим? ");
 	if (AisMagical(A, n))
 		printf("да\n");
 	else
