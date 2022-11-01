@@ -5,7 +5,7 @@
 #include "..\ValidationLib\inputReal.h"
 #include "..\ValidationLib\inputSN.h"
 
-/* Вариант-1
+/* В-1
 В одномерном массиве, состоящем из n вещественных элементов, вычислить:
 - сумму отрицательных элементов массива;
 - произведение элементов массива, расположенных между максимальным и минимальным элементами.
@@ -66,11 +66,11 @@ double composition(double arr[], int size) {
 	if (indexMax == indexMin || ABS(indexMax - indexMin) == 1) {
 		c = 0;
 	}
-	else if (indexMin < indexMax) { // min �����, max ������ (�� �����������)
+	else if (indexMin < indexMax) { // min слева, max справа
 		for (int i = indexMin + 1; i < indexMax; ++i)
 			c *= arr[i];
 	}
-	else if (indexMin > indexMax) { // min ������, max ����� (�� ��������) 
+	else if (indexMin > indexMax) { // min справа, max слева 
 		for (int i = indexMax + 1; i < indexMin; ++i)
 			c *= arr[i];
 	}
@@ -84,13 +84,13 @@ void main()
 	srand(time(NULL));
 	double arr[100] = {};
 
-	int size = inputSN("������� ����������� �������: ");
+	int size = inputSN("Введите размерность массива: ");
 	while (size > 100) {
-		size = inputSN("������� ����������� �������: ");
+		size = inputSN("Введите размерность массива: ");
 	}
-	int choice = inputSN("---��������� ������ � ���������� - 1\t���������� ���������� - 2\n");
+	int choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
-		choice = inputSN("---��������� ������ � ���������� - 1\t���������� ���������� - 2\n");
+		choice = inputSN("Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	}
 
 	switch (choice) {
@@ -100,9 +100,9 @@ void main()
 		randArrDoub(arr, size);
 	}
 
-	printf("\n������:\n");
+	printf("\nМассив:\n");
 	outputArrDoub(arr, size);
 
-	printf("\n����� ������������� ��������� �������: %lf\n", sumOfNegativeElements(arr, size));
-	printf("������������ ��������� �������, ������������� ����� ������������ � ����������� ����������: %lf\n", composition(arr, size));
+	printf("\n\nсумма отрицательных элементов массива: %lf\n", sumOfNegativeElements(arr, size));
+	printf("произведение элементов массива, расположенных между максимальным и минимальным элементами: %lf\n", composition(arr, size));
 }

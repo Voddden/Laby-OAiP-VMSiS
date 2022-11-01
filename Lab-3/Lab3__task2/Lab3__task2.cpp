@@ -4,7 +4,9 @@
 #include <time.h>
 #include "..\ValidationLib\inputSN.h"
 
-/*В массиве из n элементов удалить все четные элементы*/
+/* B-1
+В массиве из n элементов удалить все четные элементы
+*/
 
 void randArrInt(int arr[], int size) {
 	for (int i = 0; i < size; ++i)
