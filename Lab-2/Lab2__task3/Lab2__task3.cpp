@@ -1,9 +1,11 @@
 ﻿#include <stdio.h>
 #include <locale.h>
 #include "..\ValidationLib\inputSN.h";
-/*
+
+/* В-1
 Проверить являются ли числа P и Q взаимнопростыми
 */
+
 int nod(int m, int n)
 {
 	return n ? nod(n, m % n) : m; // алгоритм Евклида
