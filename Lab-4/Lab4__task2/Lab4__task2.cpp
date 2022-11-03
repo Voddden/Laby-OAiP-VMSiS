@@ -1,8 +1,12 @@
-﻿
+﻿#include <stdio.h>
+#include "../ValidationLib/inputReal.h"
+#include "../ValidationLib/inputSN.h"
 
-/*
-Найти в матрице:
-1)первую строку, все элементы которой положительны, и
-2)сумму этих элементов.
-3)Уменьшить все элементы матрицы на эту сумму.
-*/
+
+void main() {
+
+	//double f = inputReal("enter double: ");
+	//printf("\nyour double number:  %lf\n", f);
+	int a = inputSN("Enter natural number: ");
+	printf("your number: %d", a);
+}

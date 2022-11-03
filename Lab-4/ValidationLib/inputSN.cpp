@@ -1,6 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "inputReal.cpp"
+//#include "inputReal.cpp"
+
+double Pow(long num, long deg) {
+	double result = 1;
+
+	if (deg < 0) {
+		deg = -deg;
+		for (long i = 0; i < deg; i++) {
+			result *= num;
+		}
+
+		return 1 / result;
+	}
+	else {
+		for (long i = 0; i < deg; i++) {
+			result *= num;
+		}
+
+		return result;
+	}
+}
 
 bool invalidDueSymbols(char str[]) {
 	for (int i = 0; str[i] != '\0'; ++i) {
@@ -19,6 +39,7 @@ bool invalidDueNull(const char* str) {
 }
 
 int inputSN(const char* prompt) {
+	const int length = 100;
 	char input[length] = {};
 	system("cls");
 	rewind(stdin);
