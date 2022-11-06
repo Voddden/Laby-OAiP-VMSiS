@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "inputReal.cpp"
 
-double Pow(long num, long deg) {
+double Pow1(long num, long deg) {
 	double result = 1;
 
 	if (deg < 0) {
@@ -56,7 +55,7 @@ int inputSN(const char* prompt) {
 	for (; input[q] != '\0'; ++q);
 	int razryad = q - 1;
 	for (int i = 0; input[i] != '\0'; ++i) {
-		res += (input[i] - 48) * (int)Pow(10, razryad);
+		res += (input[i] - 48) * (int)Pow1(10, razryad);
 		--razryad;
 	}
 

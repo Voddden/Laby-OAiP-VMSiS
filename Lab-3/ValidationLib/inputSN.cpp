@@ -1,6 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "inputReal.cpp"
+
+double Pow1(long num, long deg) {
+	double result = 1;
+
+	if (deg < 0) {
+		deg = -deg;
+		for (long i = 0; i < deg; i++) {
+			result *= num;
+		}
+
+		return 1 / result;
+	}
+	else {
+		for (long i = 0; i < deg; i++) {
+			result *= num;
+		}
+
+		return result;
+	}
+}
 
 bool invalidDueSymbols(char str[]) {
 	for (int i = 0; str[i] != '\0'; ++i) {
@@ -19,6 +38,7 @@ bool invalidDueNull(const char* str) {
 }
 
 int inputSN(const char* prompt) {
+	const int length = 100;
 	char input[length] = {};
 	system("cls");
 	rewind(stdin);
@@ -35,7 +55,7 @@ int inputSN(const char* prompt) {
 	for (; input[q] != '\0'; ++q);
 	int razryad = q - 1;
 	for (int i = 0; input[i] != '\0'; ++i) {
-		res += (input[i] - 48) * (int)Pow(10, razryad);
+		res += (input[i] - 48) * (int)Pow1(10, razryad);
 		--razryad;
 	}
 

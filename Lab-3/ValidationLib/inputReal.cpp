@@ -1,8 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
 
-const int length = 100;
-
 double Pow(long num, long deg) {
 	double result = 1;
 
@@ -115,6 +113,7 @@ bool inputIsInvalidDueToLetters(const char* str) {
 }
 
 double inputReal(const char* prompt) {
+	const int length = 100;
 	char input[length] = {};
 	//fflush(stdin);
 	system("cls");
