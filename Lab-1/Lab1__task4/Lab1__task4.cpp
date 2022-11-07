@@ -14,8 +14,6 @@ void main()
 	
 	int num = inputSN("---Введите номер месяца: ");		
 
-	char str[10][10] = {"Январь", "Февраль"};
-
 	switch (num) {
 		case 1: printf("Январь\n"); break;
 		case 2: printf("Февраль\n"); break;

@@ -115,13 +115,11 @@ bool inputIsInvalidDueToLetters(const char* str) {
 double inputReal(const char* prompt) {
 	const int length = 100;
 	char input[length] = {};
-	//fflush(stdin);
-	system("cls");
+	//system("cls");
 	rewind(stdin);
 	printf("%s", prompt);
 
 	gets_s(input, length);
-	//fgets(input, length, stdin);
 
 	// Вызов проверяющих функций
 	while (inputIsInvalidDueToLetters(input) ||

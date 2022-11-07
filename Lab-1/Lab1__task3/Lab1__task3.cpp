@@ -18,7 +18,6 @@ void main()
 	double b = inputReal("b = ");
 	double c = inputReal("c = ");
 
-	// начало алгоритма
 	if (a == -b || b == -a)
 		printf("%.2lf \n", c);
 	else if (a == -c || c == -a)
