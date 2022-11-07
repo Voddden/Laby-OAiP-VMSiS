@@ -128,7 +128,7 @@ double inputReal(const char* prompt) {
 		inputIsInvalidDueToDigitAbsence(input))
 	{
 		system("cls");
-		printf("Error. Try again %s", prompt);
+		printf("Error. Try again\n%s", prompt);
 		gets_s(input);
 	}
 

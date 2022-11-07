@@ -6,13 +6,13 @@
 
 #include <stdio.h>
 #include <locale.h>
-#include "..\ValidationLib\inputSN.h"
+#include "..\ValidationLib\inputNatural.h"
 
 void main()
 {
 	setlocale(LC_ALL, "ru");
 	
-	int num = inputSN("---Введите номер месяца: ");		
+	int num = inputNatural("---Введите номер месяца: ");		
 
 	switch (num) {
 		case 1: printf("Январь\n"); break;
