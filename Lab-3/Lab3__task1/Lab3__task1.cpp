@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <time.h>
-#include "..\ValidationLib\inputReal.h"
-#include "..\ValidationLib\inputSN.h"
+#include "..\..\ValidationLib\inputNatural.h"
 
 /* В-1
 В одномерном массиве, состоящем из n вещественных элементов, вычислить:
@@ -84,13 +83,13 @@ void main()
 	srand(time(NULL));
 	double arr[100] = {};
 
-	int size = inputSN("Введите размерность массива: ");
+	int size = inputNatural("Введите размерность массива: ");
 	while (size > 100) {
-		size = inputSN("Введите размерность массива: ");
+		size = inputNatural("Ошибка. Введите размерность массива: ");
 	}
-	int choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+	int choice = inputNatural("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
-		choice = inputSN("Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+		choice = inputNatural("Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	}
 
 	switch (choice) {

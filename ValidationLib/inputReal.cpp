@@ -115,7 +115,7 @@ bool inputIsInvalidDueToLetters(const char* str) {
 double inputReal(const char* prompt) {
 	const int length = 100;
 	char input[length] = {};
-	//system("cls");
+	system("cls");
 	rewind(stdin);
 	printf("%s", prompt);
 

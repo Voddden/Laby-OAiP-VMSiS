@@ -1,12 +1,14 @@
 ﻿#include <stdio.h>
-#include "../ValidationLib/inputReal.h"
-#include "../ValidationLib/inputSN.h"
+#include "../../ValidationLib/inputNatural.h"
 
 
 void main() {
 
 	//double f = inputReal("enter double: ");
 	//printf("\nyour double number:  %lf\n", f);
-	int a = inputSN("Enter natural number: ");
+	int a = inputNatural("Enter natural number: ");
+
+
+
 	printf("your number: %d", a);
 }

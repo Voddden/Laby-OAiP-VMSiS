@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <time.h>
-#include "..\ValidationLib\inputSN.h"
-#include "..\ValidationLib\inputReal.h"
+#include "..\..\ValidationLib\inputNatural.h"
 
 /* В-1
 Дан массив А размера n, не содержащий нулевых элементов.
@@ -55,13 +54,13 @@ void main()
 {
 	setlocale(LC_ALL, "ru");
 	double A[100] = {};
-	int n = inputSN("Введите размерность массива: ");
+	int n = inputNatural("Введите размерность массива: ");
 	while (n > 100) {
-		n = inputSN("Введите размерность массива: ");
+		n = inputNatural("Ошибка. Введите размерность массива: ");
 	}
-	int choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+	int choice = inputNatural("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
-		choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+		choice = inputNatural("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	}
 
 	switch (choice) {

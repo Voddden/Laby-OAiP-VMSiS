@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <time.h>
-#include "..\ValidationLib\inputSN.h"
+#include "..\..\ValidationLib\inputNatural.h"
 
 void inputArr(int arr[][100], int size) {
 	system("cls");
@@ -11,7 +11,7 @@ void inputArr(int arr[][100], int size) {
 	for (int i = 0; i < size; ++i) {
 		for (int j = 0; j < size; ++j) {
 			iHateC[8] = j + 48;
-			arr[i][j] = inputSN(iHateC);
+			arr[i][j] = inputNatural(iHateC);
 		}
 		iHateC[5] = i + 1 + 48;
 	}
@@ -87,9 +87,9 @@ void main()
 {
 	setlocale(LC_ALL, "ru");
 	int A[100][100] = {};
-	int n = inputSN("Введите порядок квадрата: ");
+	int n = inputNatural("Введите порядок квадрата: ");
 	while (n > 100) {
-		n = inputSN("Введите порядок квадрата: ");
+		n = inputNatural("Введите порядок квадрата: ");
 	}
 
 	//// определение массива в исходном коде:
@@ -99,9 +99,9 @@ void main()
 	A[3][0] = 13; A[3][1] = 12; A[3][2] = 3; A[3][3] = 6;
 	//
 
-	int choice = inputSN("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\tзначения по умолчанию - 3\n");
+	int choice = inputNatural("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\tзначения по умолчанию - 3\n");
 	while (choice != 1 && choice != 2 && choice != 3) {
-		choice = inputSN("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\tзначения по умолчанию - 3\n");
+		choice = inputNatural("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\tзначения по умолчанию - 3\n");
 	}
 
 	switch (choice) {

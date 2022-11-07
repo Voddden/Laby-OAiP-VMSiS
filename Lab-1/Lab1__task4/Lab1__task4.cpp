@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 #include <locale.h>
-#include "..\ValidationLib\inputNatural.h"
+#include "..\..\ValidationLib\inputNatural.h"
 
 void main()
 {

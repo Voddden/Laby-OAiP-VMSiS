@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <time.h>
-#include "..\ValidationLib\inputSN.h"
+#include "..\..\ValidationLib\inputNatural.h"
 
 /* B-1
 В массиве из n элементов удалить все четные элементы
@@ -18,7 +18,7 @@ void inputArrInt(int arr[], int size) {
 	system("cls");
 	for (int i = 0; i < size; ++i) {
 		iHateC[4] = i + 48;
-		arr[i] = inputSN(iHateC);
+		arr[i] = inputNatural(iHateC);
 	}
 }
 
@@ -31,13 +31,13 @@ void main()
 {
 	setlocale(LC_ALL, "ru");
 	int arr[100] = {};
-	int n = inputSN("Введите размерность массива: ");
+	int n = inputNatural("Введите размерность массива: ");
 	while (n > 100) {
-		n = inputSN("Введите размерность массива: ");
+		n = inputNatural("Введите размерность массива: ");
 	}
-	int choice = inputSN("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+	int choice = inputNatural("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
-		choice = inputSN("Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
+		choice = inputNatural("Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	}
 
 	switch (choice) {

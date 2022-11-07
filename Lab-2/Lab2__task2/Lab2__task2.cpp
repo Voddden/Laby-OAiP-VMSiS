@@ -1,5 +1,5 @@
 ﻿#include <stdio.h>
-#include "..\ValidationLib\inputSN.h";
+#include "..\..\ValidationLib\inputNatural.h";
 
 /* В-1
 Составить алгоритм,  определяющий  количество способов,
@@ -10,10 +10,10 @@
 
 void main() 
 {
-	int n = inputSN("Enter n>1: ");
+	int n = inputNatural("Enter n>1: ");
 	while (n <= 1) {
 		printf("Wrong input\n");
-		n = inputSN("Enter n>1: ");
+		n = inputNatural("Enter n>1: ");
 	}
 
 	int k = 0;

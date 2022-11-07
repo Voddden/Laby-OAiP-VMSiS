@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <locale.h>
-#include "..\ValidationLib\inputRealPositive.h"
+#include "..\..\ValidationLib\inputRealPositive.h"
 
 void main()
 {
