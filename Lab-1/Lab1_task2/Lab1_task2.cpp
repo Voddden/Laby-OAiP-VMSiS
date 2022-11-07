@@ -6,16 +6,14 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include "..\ValidationLib\inputReal.h"
 
 void main()
 {
 	setlocale(LC_ALL, "ru");
-	float a, b;
 
-	printf("---Введите число a: ");
-	scanf_s("%f", &a);
-	printf("---Введите число b: ");
-	scanf_s("%f", &b);
+	double a = inputReal("a = ");
+	double b = inputReal("b = ");
 
 	if (a == b)
 		printf("a и b равны\n");

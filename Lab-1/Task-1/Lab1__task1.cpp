@@ -8,23 +8,21 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include "..\ValidationLib\inputRealPositive.h"
 
 void main()
 {
 	setlocale(LC_ALL, "ru");
-	float h, r;
 
-	printf("---¬ведите высоту цилиндра: ");
-	scanf_s("%f", &h);
-	printf("---¬ведите радиус цилиндра: ");
-	scanf_s("%f", &r);
+	double h = inputRealPositive("\nh = ");
+	double r = inputRealPositive("\nr = ");
 
-	float S_side, S_full, V;
-	const float PI = 3.14;
+	double S_side, S_full, V;
+	const double PI = 3.14;
 
 	S_side = h * 2 * PI * r;
 	S_full = S_side + 2 * PI * r * r;
 	V = PI * r * r * h;
 
-	printf("–езультат: \n S бок. поверхности = %.2f \n S полн. поверхности = %.2f \n объЄм = %.2f \n", S_side, S_full, V);
+	printf("–езультат: \n S бок. поверхности = %.2lf \n S полн. поверхности = %.2lf \n объЄм = %.2lf \n", S_side, S_full, V);
 }

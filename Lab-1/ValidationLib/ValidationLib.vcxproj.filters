@@ -15,8 +15,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lab1_task2.cpp">
+    <ClCompile Include="inputNatural.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="inputReal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inputSN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inputRealPositive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inputNatural.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inputReal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inputSN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inputRealPositive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
