@@ -15,5 +15,5 @@ void main()
 		sum += 1.0 / (float)i;
 	}
 
-	printf("Нужно %d слагаемых", i);
+	printf("Нужно %d слагаемых\n", i);
 }

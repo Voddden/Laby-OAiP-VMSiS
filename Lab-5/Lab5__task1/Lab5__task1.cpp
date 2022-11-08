@@ -1,7 +1,7 @@
 ﻿#include <stdio.h>
-#include "..\..\ValidationLib\inputReal.h"
+#include "..\..\ValidationLib\inputNatural.h"
 
 void main() {
-	double a = inputReal("haloo");
-	printf("%lf", a);
+	int a = inputNatural("a = ");
+	printf("your number: %d", a);
 }

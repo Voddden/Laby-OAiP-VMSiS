@@ -8,16 +8,26 @@
 
 int nod(int m, int n)
 {
-	return n ? nod(n, m % n) : m; // алгоритм Евклида
+	while (m != n) {
+		if (m > n) {
+			m = m - n;
+		}
+		else {
+			n = n - m;
+		}
+	}
+	return m;
 }
 
 void main()
 {
 	setlocale(LC_ALL, "ru");
-	int P = inputNatural("Enter P: ");
-	int Q = inputNatural("Enter Q: ");
+	int P = inputNatural("P = ");
+	int Q = inputNatural("Q = ");
 
-	if (nod(P, Q) == 1)
+	int NOD = nod(P, Q);
+
+	if (NOD == 1)
 		printf("%d и %d взаимнопросты\n", P, Q);
 	else
 		printf("%d и %d НЕвзаимнопросты\n", P, Q);

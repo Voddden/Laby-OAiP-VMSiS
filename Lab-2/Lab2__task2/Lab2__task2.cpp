@@ -10,16 +10,17 @@
 
 void main() 
 {
-	int n = inputNatural("Enter n>1: ");
+	int n = inputNatural("n = ");
 	while (n <= 1) {
 		printf("Wrong input\n");
-		n = inputNatural("Enter n>1: ");
+		n = inputNatural("n = ");
 	}
 
 	int k = 0;
 
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
-			if ( i*i*i + j*j*j == n) k++;
+			if (i*i*i + j*j*j == n) 
+				k++;
 	printf("Number of ways = %d\n", k);
 }

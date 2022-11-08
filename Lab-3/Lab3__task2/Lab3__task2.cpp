@@ -33,7 +33,7 @@ void main()
 	int arr[100] = {};
 	int n = inputNatural("Введите размерность массива: ");
 	while (n > 100) {
-		n = inputNatural("Введите размерность массива: ");
+		n = inputNatural("Ошибка. Введите размерность массива: ");
 	}
 	int choice = inputNatural("---Заполнить массив с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
