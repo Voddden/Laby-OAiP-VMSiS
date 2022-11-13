@@ -139,14 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="inputInteger.cpp" />
     <ClCompile Include="inputReal.cpp" />
     <ClCompile Include="inputRealPositive.cpp" />
     <ClCompile Include="inputNatural.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inputInteger.h" />
     <ClInclude Include="inputNatural.h" />
     <ClInclude Include="inputReal.h" />
     <ClInclude Include="inputRealPositive.h" />
+    <ClInclude Include="Validation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

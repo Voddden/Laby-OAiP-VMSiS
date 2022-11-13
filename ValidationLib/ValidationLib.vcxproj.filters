@@ -24,6 +24,9 @@
     <ClCompile Include="inputRealPositive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="inputInteger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inputNatural.h">
@@ -33,6 +36,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inputRealPositive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Validation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inputInteger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
