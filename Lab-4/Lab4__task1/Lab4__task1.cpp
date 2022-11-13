@@ -1,49 +1,102 @@
-﻿#include <stdio.h>
-#include <stdlib.h>
-#include <locale.h>
-#include <time.h>
-#include "..\..\ValidationLib\inputNatural.h"
+﻿#include "../../ValidationLib/Validation.h"
 
-void inputArr(int arr[][], int m, int n) {
-	system("cls");
-	char iHateC[] = "\narr[.][.] = ";
+int** allocation(int m, int n) {
+	int** mas;
+	mas = (int**)calloc(m, sizeof(int*));
+	for (int i = 0; i < m; i++)
+	{
+		mas[i] = (int*)malloc(n * sizeof(int)); //*(mas + i)
+	}
+	return mas;
+}
 
+void inputArr(int** arr, int m, int n) {
+	char iHateC[] = "arr[.][.] = ";
 	for (int i = 0; i < m; ++i) {
 		for (int j = 0; j < n; ++j) {
-			iHateC[8] = j + 48;
-			arr[i][j] = inputNatural(iHateC);
+			iHateC[4] = i + 48;
+			iHateC[7] = j + 48;
+			arr[i][j] = inputInteger(iHateC);
 		}
-		iHateC[5] = i + 1 + 48;
 	}
 }
 
-void outputArr(int arr[][], int size) {
-	for (int i = 0; i < size; ++i) {
-		for (int j = 0; j < size; ++j) {
-			printf("%-d\t", arr[i][j]);
+void randArr(int** arr, int m, int n) {
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < n; ++j) {
+			arr[i][j] = rand() % 10 - rand() % 10;
+		}
+	}
+}
+
+void outputArr(int** arr, int m, int n) {
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < n; ++j) {
+			printf("%d ", arr[i][j]);
 		}
 		printf("\n");
 	}
 }
 
-void randArr(int arr[][], int size) {
-	for (int i = 0; i < size; ++i) {
-		for (int j = 0; j < size; ++j) {
-			arr[i][j] = rand() % 10;
-		}
+////  1-ая часть задачи
+void swap(int& a, int& b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+void swapRows(int* a, int* b, int n) {
+	int* temp = (int*)malloc(sizeof(int) * n);
+
+	for (int i = 0; i < n; ++i) {
+		temp[i] = a[i];
+		a[i] = b[i];
+		b[i] = temp[i];
 	}
 }
 
-int** allocation(int m, int n)
-{
-	int** mas;
-	mas = (int**)calloc(m, sizeof(int*));
-	for (int i = 0; i < m; i++)
-	{
-		mas[i] = (int*)calloc(n, sizeof(int)); //*(mas + i)
+int numOfEqualElements(int* arr, int size) {
+	int result = 0;
+
+	for (int u = 0; u < size; ++u) {
+		int result_temp = 0, current = arr[u];
+		for (int i = 0; i < size; ++i) {
+			if (current == arr[i])
+				++result_temp;
+		}
+		if (result_temp == 1)
+			--result_temp; // -1, т.к. элемент 1 раз сравнивался сам с собой
+		if (result_temp > result)
+			result = result_temp;
 	}
-	return mas;
+
+	return result;
 }
+
+void arrangeArr(int** arr, int m, int n) {
+	int* EqualElements = (int*)malloc(sizeof(int) * m);
+	for (int i = 0; i < m; ++i) {
+		EqualElements[i] = numOfEqualElements(arr[i], n);
+	}
+	// причудливая модифицированная пузырьковая сортировка по убыванию
+	for (int i = 0; i < m - 1; ++i) {
+		for (int k = 0; k < m - 1 - i; ++k) {
+			if (EqualElements[k] < EqualElements[k + 1]) {
+				swap(EqualElements[k], EqualElements[k + 1]);
+				swapRows(arr[k], arr[k + 1], n);
+			}
+		}
+	}
+}
+//
+
+//////  2-ая часть задачи
+//int findIndex(int** arr, int m, int n) {
+//	for(int j = 0; j < n; )
+//
+//	return 0;
+//}
+//
 
 /* В-12
 1) Упорядочить строки целочисленной прямоугольной матрицы
@@ -53,21 +106,15 @@ int** allocation(int m, int n)
 
 void main()
 {
+	srand(time(NULL));
 	setlocale(LC_ALL, "ru");
-	//int A[100][100] = {};
-
+	printf("ЛР 4, таска 1\n\n");
 	printf("Матрица m x n\n");
 
 	int m = inputNatural("m = ");
-	//while (m > 100) {
-	//	m = inputNatural("Error\nm = ");
-	//}
 	int n = inputNatural("n = ");
-	//while (n > 100) {
-	//	n = inputNatural("Error\nn = ");
-	//}
 
-	int** A = allocation(m, n);
+	int** arr = allocation(m, n);
 
 	int choice = inputNatural("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
@@ -76,14 +123,19 @@ void main()
 
 	switch (choice) {
 	case 1:
-		inputArr(A, n); break;
+		inputArr(arr, m, n); break;
 	case 2:
-		randArr(A, n);
+		randArr(arr, m, n);
 	}
 
 	printf("\nМатрица:\n");
-	outputArr(A, n);
+	outputArr(arr, m, n);
+	// задача 1
+	arrangeArr(arr, m, n);
+	// задача 2
+	//int number = findIndex(arr, m, n) + 1;
 
-	printf("Упорядоченная матрица:\n");
-	outputArr(A, n);
+	printf("\n1) Упорядоченная матрица:\n");
+	outputArr(arr, m, n);
+	//printf("\n2) Номер = %d\n", number);
 }
