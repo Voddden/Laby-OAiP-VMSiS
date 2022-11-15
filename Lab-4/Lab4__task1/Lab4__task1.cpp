@@ -38,7 +38,7 @@ void outputArr(int** arr, int m, int n) {
 	}
 }
 
-////  1-ая часть задачи
+////  1-ая часть
 void swap(int& a, int& b) {
 	int temp = a;
 	a = b;
@@ -90,12 +90,25 @@ void arrangeArr(int** arr, int m, int n) {
 }
 //
 
-//////  2-ая часть задачи
-//int findIndex(int** arr, int m, int n) {
-//	for(int j = 0; j < n; )
-//
-//	return 0;
-//}
+////  2-ая часть
+bool noNegativeElements(int* arr, int rows) {
+	for (int i = 0; i < rows; ++i) {
+		if (*(arr + i * rows) < 0)
+			return false;
+	}
+	return true;
+}
+
+int findIndex(int** arr, int m, int n) {	
+	// еще не доделана
+	for (int j = 0; j < n; ++j) {
+		if (noNegativeElements(*(arr + j*m), m)) {
+			return j;
+		}
+	}
+
+	return -1;
+}
 //
 
 /* В-12
@@ -130,12 +143,14 @@ void main()
 
 	printf("\nМатрица:\n");
 	outputArr(arr, m, n);
-	// задача 1
+	// часть 1
 	arrangeArr(arr, m, n);
-	// задача 2
-	//int number = findIndex(arr, m, n) + 1;
-
 	printf("\n1) Упорядоченная матрица:\n");
 	outputArr(arr, m, n);
-	//printf("\n2) Номер = %d\n", number);
+	// часть 2
+	//int index = findIndex(arr, m, n);
+	//if (index >= 0)
+	//	printf("\n2) Индекс столбца = %d\n", index);
+	//else
+	//	printf("\n2) Таких столбцов нет\n");
 }
