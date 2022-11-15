@@ -11,6 +11,12 @@ int** allocation(int m, int n)
 	return mas;
 }
 
+void Free(int** arr, int m) {
+	for (int i = 0; i < m; ++i)
+		free(arr[i]);
+	free(arr);
+}
+
 void inputArr(int** arr, int m, int n) {
 	char iHateC[] = "arr[.][.] = ";
 	for (int i = 0; i < m; ++i) {
@@ -101,4 +107,6 @@ void main()
 		printf("\nОбработанная матрица:\n\n");
 		outputArr(arr, m, n);
 	}
+
+	Free(arr, m);
 }

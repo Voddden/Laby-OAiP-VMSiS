@@ -1,6 +1,6 @@
 ﻿#include "../../ValidationLib/Validation.h"
 
-int** allocation(int m, int n) {
+int** allocation(int m, int n) { 
 	int** mas;
 	mas = (int**)calloc(m, sizeof(int*));
 	for (int i = 0; i < m; i++)
@@ -8,6 +8,12 @@ int** allocation(int m, int n) {
 		mas[i] = (int*)malloc(n * sizeof(int)); //*(mas + i)
 	}
 	return mas;
+}
+
+void Free(int** arr, int m) {
+	for (int i = 0; i < m; ++i)
+		free(arr[i]);
+	free(arr);
 }
 
 void inputArr(int** arr, int m, int n) {
@@ -53,6 +59,7 @@ void swapRows(int* a, int* b, int n) {
 		a[i] = b[i];
 		b[i] = temp[i];
 	}
+	free(temp);
 }
 
 int numOfEqualElements(int* arr, int size) {
@@ -87,6 +94,7 @@ void arrangeArr(int** arr, int m, int n) {
 			}
 		}
 	}
+	free(EqualElements);
 }
 //
 
@@ -161,4 +169,6 @@ void main()
 		printf("\n2) Индекс столбца = %d\n", index);
 	else
 		printf("\n2) Таких столбцов нет\n");
+
+	Free(arr, m);
 }

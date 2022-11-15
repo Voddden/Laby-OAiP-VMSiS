@@ -11,6 +11,12 @@ int** allocation(int m, int n)
 	return mas;
 }
 
+void Free(int** arr, int m) {
+	for (int i = 0; i < m; ++i)
+		free(arr[i]);
+	free(arr);
+}
+
 void inputArr(int** arr, int m, int n) {
 	char iHateC[] = "arr[.][.] = ";
 	for (int i = 0; i < m; ++i) {
@@ -85,4 +91,6 @@ void main()
 	outputArr(arr, n, n);
 	// работа с квадратом:
 	printf("\nСумма = %d\n", Sum(arr, n));
+
+	Free(arr, n);
 }
