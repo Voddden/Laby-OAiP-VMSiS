@@ -32,7 +32,7 @@ void randArr(int** arr, int m, int n) {
 void outputArr(int** arr, int m, int n) {
 	for (int i = 0; i < m; ++i) {
 		for (int j = 0; j < n; ++j) {
-			printf("%d ", arr[i][j]);
+			printf("%5d ", arr[i][j]);
 		}
 		printf("\n");
 	}
@@ -91,23 +91,31 @@ void arrangeArr(int** arr, int m, int n) {
 //
 
 ////  2-ая часть
-bool noNegativeElements(int* arr, int rows) {
-	for (int i = 0; i < rows; ++i) {
-		if (*(arr + i * rows) < 0)
+
+int** transpose(int** arr, int x, int y) {
+	int** arr_T = allocation(y, x);
+	for (int i = 0; i < x; i++) // транспонирование матрицы
+		for (int j = 0; j < y; j++)
+			arr_T[j][i] = arr[i][j];
+	return arr_T;
+}
+
+bool noNegativeElements(int* arr, int size) {
+	for (int i = 0; i < size; ++i) {
+		if (arr[i] < 0)
 			return false;
 	}
 	return true;
 }
 
 int findIndex(int** arr, int m, int n) {	
-	// еще не доделана
-	for (int j = 0; j < n; ++j) {
-		if (noNegativeElements(*(arr + j*m), m)) {
-			return j;
+	for (int i = 0; i < n; ++i) {
+		if (noNegativeElements(arr[i], m)) {
+			return i;
 		}
 	}
 
-	return -1;
+	return -1; // значит во всех столбцах матрицы есть как минимум одно отрицательное число
 }
 //
 
@@ -129,9 +137,9 @@ void main()
 
 	int** arr = allocation(m, n);
 
-	int choice = inputNatural("---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\n");
+	int choice = inputNatural("---Заполнить матрицу с клавиатуры - 1\tслучайными значениями - 2\n");
 	while (choice != 1 && choice != 2) {
-		choice = inputNatural("Error\n---Заполнить квадрат с клавиатуры - 1\tслучайными значениями - 2\n");
+		choice = inputNatural("Error\n---Заполнить матрицу с клавиатуры - 1\tслучайными значениями - 2\n");
 	}
 
 	switch (choice) {
@@ -141,16 +149,16 @@ void main()
 		randArr(arr, m, n);
 	}
 
-	printf("\nМатрица:\n");
+	printf("\nМатрица:\n\n");
 	outputArr(arr, m, n);
 	// часть 1
 	arrangeArr(arr, m, n);
-	printf("\n1) Упорядоченная матрица:\n");
+	printf("\n1) Упорядоченная матрица:\n\n");
 	outputArr(arr, m, n);
 	// часть 2
-	//int index = findIndex(arr, m, n);
-	//if (index >= 0)
-	//	printf("\n2) Индекс столбца = %d\n", index);
-	//else
-	//	printf("\n2) Таких столбцов нет\n");
+	int index = findIndex(transpose(arr, m, n), m, n); // передаём в функцию транпспонированную матрицу
+	if (index >= 0)
+		printf("\n2) Индекс столбца = %d\n", index);
+	else
+		printf("\n2) Таких столбцов нет\n");
 }
