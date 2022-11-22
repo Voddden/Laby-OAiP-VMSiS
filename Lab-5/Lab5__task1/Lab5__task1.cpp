@@ -20,7 +20,7 @@ void deleteNull(int* arr, int& size) {
 	size = newSize;
 }
 
-void main()
+void main() // комментарий
 {
 	int size = 12;
 	int* arr = (int*)malloc(size * sizeof(int));
