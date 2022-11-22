@@ -16,7 +16,7 @@ void deleteNull(int* arr, int& size) {
 			--i;
 		}
 	}
-	realloc(arr, newSize);
+	arr = (int*)realloc(arr, newSize);
 	size = newSize;
 }
 
